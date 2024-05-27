@@ -38,9 +38,9 @@ encryption key & it is free. There are below options available:
 
 __Capacity Mode :__  
 __On-Demand :__ Simplify bills by paying for the actual reads & writes your application performs  
-__Provisioned :__ Manage and optimize your costs by allocating read/write capacity in advance.  
-Read capacity (RPU): There is an option to autoscale RPUs as well as fixed.
-Write capacity (WCU): There is an option to autoscale WCUs as well as fixed.
+__Provisioned :__ Manage and optimize your costs by allocating read/write capacity in advance.    
+__Read capacity (RPU):__ There is an option to autoscale RPUs as well as fixed.  
+__Write capacity (WCU):__ There is an option to autoscale WCUs as well as fixed.  
 For autoscaling provide min & max units as well target utilization percent
 
 __Import/Export :__
@@ -54,3 +54,12 @@ __TTL :__
 - TTL happens automatically.
 - Time must be in epoch.Attribute having this epoch should be of N (Number) type not S (String).
 - TTL can take 48 hours or more asynchronously.
+
+__DynamoDB Stream :__
+- It emits the events when any kind of record modification happens on the table.
+- Events can be of INSERT, UPDATE, DELETE type.
+- Events can carry the events of row being modified.
+- Events guaranteed to be in the same order as modification took place.
+- No performance impact on the table.
+- Events can carry data of modified data like (Key only,old data,new data,new & old data).
+- Events can be batched when integrating with lambda
