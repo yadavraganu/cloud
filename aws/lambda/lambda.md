@@ -1,6 +1,7 @@
 # What is lambda
 - You can use AWS Lambda to run code without provisioning or managing servers.
-- Lambda runs your code on a high-availability compute infrastructure and performs all of the administration of the compute resources, including server and operating system maintenance, capacity provisioning and automatic scaling, and logging.
+- Lambda runs your code on a high-availability compute infrastructure and performs all of the administration of the compute resources,
+  including server and operating system maintenance, capacity provisioning and automatic scaling, and logging.
 - With Lambda, all you need to do is supply your code in one of the language runtimes that Lambda supports.
 - You organize your code into Lambda functions. The Lambda service runs your function only when needed and scales automatically.
 - You only pay for the compute time that you consume,there is no charge when your code is not running
@@ -27,3 +28,10 @@ When your function receives a new request, one of two things can happen:
 __Reserved concurrency__ – This represents the maximum number of concurrent instances allocated to your function. When a function has reserved concurrency, no other function can use that concurrency. Reserved concurrency is useful for ensuring that your most critical functions always have enough concurrency to handle incoming requests. Configuring reserved concurrency for a function incurs no additional charges.
 
 __Provisioned concurrency__ – This is the number of pre-initialized execution environments allocated to your function. These execution environments are ready to respond immediately to incoming function requests. Provisioned concurrency is useful for reducing cold start latencies for functions. Configuring provisioned concurrency incurs additional charges to your AWS account.
+## Environment Variables
+You can use environment variables to adjust your function's behavior without updating code. An environment variable is a pair of strings that is    
+stored in a function's version-specific configuration. The Lambda runtime makes environment variables available to your code and sets additional  
+environment variables that contain information about the function and invocation request (reserved or in built variables).  
+Environment variables are not evaluated before the function invocation. Any value you define is considered a literal string and not expanded.
+
+![image](https://github.com/yadavraganu/cloud/assets/77580939/bc9d89f3-4837-4758-8e90-1c7cceb80730)
