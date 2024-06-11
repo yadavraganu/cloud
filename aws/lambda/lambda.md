@@ -35,3 +35,8 @@ additional environment variables that contain information about the function and
 Environment variables are not evaluated before the function invocation. Any value you define is considered a literal string and not expanded.
 
 ![image](https://github.com/yadavraganu/cloud/assets/77580939/bc9d89f3-4837-4758-8e90-1c7cceb80730)
+
+## Timeout
+Lambda runs your code for a set amount of time before timing out. Timeout is the maximum amount of time in seconds that a Lambda function can run.  
+The default value for this setting is 3 seconds, but you can adjust this in increments of 1 second up to a maximum value of 900 seconds (15 minutes). 
+
