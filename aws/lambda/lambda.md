@@ -30,8 +30,8 @@ __Reserved concurrency__ – This represents the maximum number of concurrent in
 __Provisioned concurrency__ – This is the number of pre-initialized execution environments allocated to your function. These execution environments are ready to respond immediately to incoming function requests. Provisioned concurrency is useful for reducing cold start latencies for functions. Configuring provisioned concurrency incurs additional charges to your AWS account.
 ## Environment Variables
 You can use environment variables to adjust your function's behavior without updating code. An environment variable is a pair of strings that is    
-stored in a function's version-specific configuration. The Lambda runtime makes environment variables available to your code and sets additional  
-environment variables that contain information about the function and invocation request (reserved or in built variables).  
+stored in a function's version-specific configuration. The Lambda runtime makes environment variables available to your code and sets  
+additional environment variables that contain information about the function and invocation request (reserved or in built variables).  
 Environment variables are not evaluated before the function invocation. Any value you define is considered a literal string and not expanded.
 
 ![image](https://github.com/yadavraganu/cloud/assets/77580939/bc9d89f3-4837-4758-8e90-1c7cceb80730)
