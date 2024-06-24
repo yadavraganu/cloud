@@ -23,3 +23,72 @@ It is secondary queue which is used to store the messages which got failed while
 # Redrive Allow Policy
 Use to set which queue can use current queue as DLQ.
 ![image](https://github.com/yadavraganu/cloud/assets/77580939/b8388ed3-7229-4d0b-aea3-52d6b1b2cf89)
+
+#boto3
+### Create Queue:
+```
+def create_queue():
+    sqs_client = boto3.client("sqs", region_name="us-west-2")
+    response = sqs_client.create_queue(
+        QueueName="my-new-queue",
+        Attributes={
+            "DelaySeconds": "0",
+            "VisibilityTimeout": "60",  # 60 seconds
+        }
+    )
+```
+### Get Queue Url
+```
+def get_queue_url():
+    sqs_client = boto3.client("sqs", region_name="us-west-2")
+    response = sqs_client.get_queue_url(
+        QueueName="my-new-queue",
+    )
+    return response["QueueUrl"]
+```
+### Send Message 
+```
+def send_message():
+    sqs_client = boto3.client("sqs", region_name="us-west-2")
+
+    message = {"key": "value"}
+    response = sqs_client.send_message(
+        QueueUrl="https://us-west-2.queue.amazonaws.com/xxx/my-new-queue",
+        MessageBody=json.dumps(message)
+    )
+```
+### Receive Messages
+```
+def receive_message():
+    sqs_client = boto3.client("sqs", region_name="us-west-2")
+    response = sqs_client.receive_message(
+        QueueUrl="https://us-west-2.queue.amazonaws.com/xxx/my-new-queue",
+        MaxNumberOfMessages=1,
+        WaitTimeSeconds=10,
+    )
+
+    print(f"Number of messages received: {len(response.get('Messages', []))}")
+
+    for message in response.get("Messages", []):
+        message_body = message["Body"]
+        print(f"Message body: {json.loads(message_body)}")
+        print(f"Receipt Handle: {message['ReceiptHandle']}")
+```
+### Delete Messages
+```
+def delete_message(receipt_handle):
+    sqs_client = boto3.client("sqs", region_name="us-west-2")
+    response = sqs_client.delete_message(
+        QueueUrl="https://us-west-2.queue.amazonaws.com/xxx/my-new-queue",
+        ReceiptHandle=receipt_handle,
+    )
+```
+### Delete All Messages (Purge)
+```
+def purge_queue():
+    sqs_client = boto3.client("sqs", region_name="us-west-2")
+    response = sqs_client.purge_queue(
+        QueueUrl="https://us-west-2.queue.amazonaws.com/xxx/my-new-queue",
+    )
+    print(response)
+```
