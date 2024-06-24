@@ -22,3 +22,4 @@ It is secondary queue which is used to store the messages which got failed while
 
 # Redrive Allow Policy
 Use to set which queue can use current queue as DLQ.
+![image](https://github.com/yadavraganu/cloud/assets/77580939/b8388ed3-7229-4d0b-aea3-52d6b1b2cf89)
