@@ -78,3 +78,41 @@ Example:
 | **Elastic Load Balancers** | Define allowed traffic to backend instances         |
 | **Lambda (VPC-enabled)** | Control access to other VPC resources               |
 | **ECS Tasks (Fargate)** | Secure communication between containers              |
+
+## What is an **Interface Endpoint** in AWS?
+
+An **Interface Endpoint** is a type of **VPC Endpoint** that allows you to privately connect your VPC to supported **AWS services**, **third-party services**, or **your own services**—**without using public IPs** or traversing the internet.
+
+### Key Features
+
+- **Powered by AWS PrivateLink**: Uses private IPs within your VPC.
+- **Creates an Elastic Network Interface (ENI)** in your subnet.
+- **Secure**: Traffic stays within the AWS network.
+- **Supports services like**:
+  - Amazon S3
+  - DynamoDB
+  - Secrets Manager
+  - CloudWatch
+  - Custom services hosted behind a Network Load Balancer
+  
+### How It Works
+
+1. You create an **Interface Endpoint** in a subnet of your VPC.
+2. AWS provisions an **ENI** with a private IP in that subnet.
+3. Your VPC resources use this ENI to communicate with the target service.
+4. No need for NAT Gateway, Internet Gateway, or public IPs.
+
+### Use Cases
+
+| Use Case | Benefit |
+|----------|---------|
+| Accessing AWS services privately | Avoids public internet exposure |
+| Connecting to third-party SaaS | Secure and scalable integration |
+| Hosting internal services | Share securely across accounts/VPCs |
+| Compliance-sensitive workloads | Meets data residency and security requirements |
+
+### Security Benefits
+
+- Traffic never leaves the AWS backbone.
+- You can control access using **Security Groups** and **IAM policies**.
+- Helps meet **compliance** and **audit** requirements.
