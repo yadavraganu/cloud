@@ -42,3 +42,39 @@ Amazon VPC is a **logically isolated network** within the AWS cloud where you ca
 ### 10. **VPC Endpoints**
 - Private connections to AWS services without using the internet.
 - Types: **Interface Endpoint** and **Gateway Endpoint**.
+
+## What Are Security Groups in AWS?
+
+**Security Groups** are virtual firewalls that control **inbound and outbound traffic** to AWS resources—primarily **EC2 instances**. They operate at the **instance level**, not the subnet level.
+
+### Key Characteristics
+
+- **Stateful**: If you allow inbound traffic, the response is automatically allowed outbound.
+- **Instance-Level**: Applied directly to EC2 instances or other supported resources.
+- **Allow Rules Only**: You can only specify what traffic is allowed; all other traffic is implicitly denied.
+- **Multiple Groups**: You can assign multiple security groups to a single instance.
+
+### 📥 Inbound Rules
+
+Define what traffic is **allowed to reach** your instance.
+
+Example:
+- Allow SSH from your IP: `TCP port 22` from `203.0.113.0/32`
+- Allow HTTP from anywhere: `TCP port 80` from `0.0.0.0/0`
+
+### 📤 Outbound Rules
+
+Define what traffic your instance is **allowed to send out**.
+
+Example:
+- Allow all outbound traffic: `0.0.0.0/0` on all ports (default)
+
+### Where to Use Security Groups
+
+| Resource Type        | Use Case Example                                      |
+|----------------------|--------------------------------------------------------|
+| **EC2 Instances**     | Control access via SSH, HTTP, HTTPS, etc.             |
+| **RDS Databases**     | Allow access only from specific EC2 or IP ranges      |
+| **Elastic Load Balancers** | Define allowed traffic to backend instances         |
+| **Lambda (VPC-enabled)** | Control access to other VPC resources               |
+| **ECS Tasks (Fargate)** | Secure communication between containers              |
